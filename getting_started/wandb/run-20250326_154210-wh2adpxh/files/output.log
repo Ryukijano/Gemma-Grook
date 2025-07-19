@@ -1,0 +1,49 @@
+  0%|                                                  | 0/2000 [00:00<?, ?it/s]Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+Traceback (most recent call last):
+  File "/home/ryukijano/Isaac-GR00T/scripts/gr00t_finetune.py", line 225, in <module>
+    main(config)
+  File "/home/ryukijano/Isaac-GR00T/scripts/gr00t_finetune.py", line 197, in main
+    experiment.train()
+  File "/home/ryukijano/Isaac-GR00T/gr00t/experiment/runner.py", line 164, in train
+    self.trainer.train(resume_from_checkpoint=self.resume_from_checkpoint)
+  File "/home/ryukijano/Isaac-GR00T/gr00t/experiment/trainer.py", line 153, in train
+    return super().train(resume_from_checkpoint, trial, ignore_keys_for_eval, **kwargs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/transformers/trainer.py", line 2388, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/transformers/trainer.py", line 3485, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/home/ryukijano/Isaac-GR00T/gr00t/experiment/trainer.py", line 75, in compute_loss
+    outputs = model(inputs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/accelerate/utils/operations.py", line 823, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/accelerate/utils/operations.py", line 811, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/home/ryukijano/Isaac-GR00T/gr00t/model/gr00t_n1.py", line 170, in forward
+    action_head_outputs = self.action_head(backbone_outputs, action_inputs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ryukijano/Isaac-GR00T/gr00t/model/action_head/flow_matching_action_head.py", line 290, in forward
+    t = self.sample_time(actions.shape[0], device=actions.device, dtype=actions.dtype)
+  File "/home/ryukijano/Isaac-GR00T/gr00t/model/action_head/flow_matching_action_head.py", line 262, in sample_time
+    sample = self.beta_dist.sample([batch_size]).to(device, dtype=torch.float32)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/distributions/distribution.py", line 167, in sample
+    return self.rsample(sample_shape)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/distributions/beta.py", line 78, in rsample
+    return self._dirichlet.rsample(sample_shape).select(-1, 0)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/distributions/dirichlet.py", line 77, in rsample
+    return _Dirichlet.apply(concentration)
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/ryukijano/miniconda3/envs/gr00t/lib/python3.10/site-packages/torch/distributions/dirichlet.py", line 23, in forward
+    x = torch._sample_dirichlet(concentration)
+RuntimeError: "dirichlet" not implemented for 'BFloat16'

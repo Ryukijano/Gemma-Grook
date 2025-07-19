@@ -1,0 +1,26 @@
+{
+    "fsdp": {
+        "sharding_strategy": "FULL_SHARD",
+        "min_num_params": 1e8,
+        "cpu_offload": {
+            "device": "cpu",
+            "pin_memory": true
+        }
+    },
+    "bf16": {
+        "enabled": true
+    },
+    "optimizer": {
+        "type": "AdamW",
+        "params": {
+            "lr": 1e-5,
+            "weight_decay": 0.01
+        }
+    },
+    "scheduler": {
+        "type": "cosine",
+        "params": {
+            "warmup_ratio": 0.1
+        }
+    }
+}

@@ -1,0 +1,6 @@
+  0%|                                                   | 0/200 [00:00<?, ?it/s]The input hidden states seems to be silently casted in float32, this might be related to the fact you have upcasted embedding or layer norm layers in float32. We will cast back the input in torch.bfloat16.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+ 16%|█████▍                             | 31/200 [6:18:48<48:07:24, 1025.12s/it]
+{'loss': 0.6134, 'grad_norm': 11.09314250946045, 'learning_rate': 0.0001, 'epoch': 0.0}
+{'loss': 0.2955, 'grad_norm': 6.1436848640441895, 'learning_rate': 9.931806517013612e-05, 'epoch': 0.0}
+{'loss': 0.3673, 'grad_norm': 4.276758193969727, 'learning_rate': 9.729086208503174e-05, 'epoch': 0.0}

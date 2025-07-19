@@ -1,0 +1,65 @@
+/var/spool/slurmd/job1399701/slurm_script: line 24: conda: command not found
+/var/spool/slurmd/job1399701/slurm_script: line 24: /etc/profile.d/conda.sh: No such file or directory
+/var/spool/slurmd/job1399701/slurm_script: line 25: conda: command not found
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+Traceback (most recent call last):
+  File "/mnt/scratch/cbjp404/Isaac-GR00T/scripts/gr00t_finetune.py", line 27, in <module>
+    from gr00t.data.dataset import LeRobotMixtureDataset, LeRobotSingleDataset
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/dataset.py", line 48, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .transform import ComposedModalityTransform
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/__init__.py", line 22, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    from .state_action import (
+  File "/scratch/cbjp404/Isaac-GR00T/gr00t/data/transform/state_action.py", line 21, in <module>
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+    import pytorch3d.transforms as pt
+ModuleNotFoundError: No module named 'pytorch3d'
+srun: error: gpu001: tasks 0-2: Exited with exit code 1
+srun: error: gpu004: tasks 3-5: Exited with exit code 1
