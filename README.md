@@ -4,7 +4,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
 Gemma-GR00T is an open-source project that integrates Google's Gemma language model with NVIDIA's GR00T robotics framework to create advanced multimodal vision-language-action policies for robotic manipulation tasks. This project enables robots to understand natural language instructions, perceive their environment through vision, and perform precise manipulation tasks.
-[!(https://github.com/Ryukijano/Gemma-Grook/blob/main/84c6e56a-e60e-4d9b-a745-c5f6976ce746.png)]
+![Gemma-Gr00t](https://github.com/Ryukijano/Gemma-Grook/blob/main/84c6e56a-e60e-4d9b-a745-c5f6976ce746.png)
 
 ## 🚀 Features
 
