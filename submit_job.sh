@@ -44,7 +44,6 @@ fi
 srun --export=ALL \
     python lerobot/lerobot/scripts/train.py \
       --policy.type gemma_le \
-      --config_path outputs/train/2025-08-11/01-15-25_gemma_le/checkpoints/last/pretrained_model/train_config.json \
       --dataset.repo_id local/robot_sim.PickNPlace \
       --dataset.root /scratch/cbjp404/Isaac-GR00T/demo_data/robot_sim.PickNPlace \
       --dataset.episodes "[0,1,2,3,4]" \
@@ -59,7 +58,6 @@ srun --export=ALL \
       --policy.vision_model_id /scratch/cbjp404/.cache/hf/models/siglip-so400m-patch14-384 \
       --policy.text_model_id /scratch/cbjp404/.cache/hf/models/gemma-3-4b-it \
       --push_to_hub false \
-      --resume true \
       --push_repo_id Ryukijano/gemma-groot \
       --push_branch main \
       --push_exist_ok true
