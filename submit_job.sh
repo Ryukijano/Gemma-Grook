@@ -2,8 +2,8 @@
 #SBATCH --job-name=gemma_le_train
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=8G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=16G
 #SBATCH --gres=gpu:3
 #SBATCH --partition=gpu
 #SBATCH --time=40:00:00
@@ -44,6 +44,7 @@ fi
 srun --export=ALL \
     python lerobot/lerobot/scripts/train.py \
       --policy.type gemma_le \
+      --config_path outputs/train/2025-08-11/01-15-25_gemma_le/checkpoints/last/pretrained_model/train_config.json \
       --dataset.repo_id local/robot_sim.PickNPlace \
       --dataset.root /scratch/cbjp404/Isaac-GR00T/demo_data/robot_sim.PickNPlace \
       --dataset.episodes "[0,1,2,3,4]" \
