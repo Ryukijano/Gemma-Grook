@@ -15,6 +15,7 @@ export PYTHONPATH=/scratch/cbjp404/Isaac-GR00T/lerobot/lerobot:$PYTHONPATH
 export XDG_CACHE_HOME=/scratch/cbjp404/.cache
 export HF_HOME=/scratch/cbjp404/.cache/hf
 export HUGGINGFACE_HUB_CACHE=$HF_HOME/hub
+export HUGGINGFACE_HUB_TOKEN=${HF_TOKEN}
 export TRANSFORMERS_CACHE=$HF_HOME/transformers
 export WANDB_DIR=/scratch/cbjp404/.cache/wandb
 export PIP_CACHE_DIR=/scratch/cbjp404/.cache/pip
@@ -35,10 +36,7 @@ export WORLD_SIZE=${WORLD_SIZE:-$SLURM_NTASKS}
 module load miniforge
 conda activate gr00t
 
-# Login to Hugging Face (expects $HF_TOKEN to be set in your env; otherwise it will no-op)
-if [[ -n "$HF_TOKEN" ]]; then
-  huggingface-cli login --token "$HF_TOKEN" --add-to-git-credential False || true
-fi
+# Skipping interactive Hugging Face CLI login; rely on HUGGINGFACE_HUB_TOKEN for auth
 
 # Launch training (single process using DataParallel across 3 GPUs)
 srun --export=ALL \
