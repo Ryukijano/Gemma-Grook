@@ -3,7 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=16G
+# Request node memory explicitly to avoid checkpoint OOMs
+#SBATCH --mem=160G
 #SBATCH --gres=gpu:3
 #SBATCH --partition=gpu
 #SBATCH --time=40:00:00
@@ -46,11 +47,11 @@ srun --export=ALL \
       --dataset.root /scratch/cbjp404/Isaac-GR00T/demo_data/robot_sim.PickNPlace \
       --dataset.episodes "[0,1,2,3,4]" \
       --dataset.use_imagenet_stats false \
-      --batch_size 3 \
+      --batch_size 2 \
       --steps 60000 \
       --log_freq 100 \
       --save_freq 20000 \
-      --num_workers 8 \
+      --num_workers 4 \
       --progress_bar true \
       --policy.use_amp true \
       --policy.vision_model_id /scratch/cbjp404/.cache/hf/models/siglip-so400m-patch14-384 \
