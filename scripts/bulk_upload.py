@@ -101,7 +101,10 @@ def main() -> None:
                 break
             except Exception as e:
                 last_err = e
-                print(f"Attempt {attempt}/{args.retries} failed for {path_in_repo}: {e}", flush=True)
+                print(
+                    f"Attempt {attempt}/{args.retries} failed for {path_in_repo}: {last_err}",
+                    flush=True,
+                )
         if last_err is not None:
             print(f"Failed {path_in_repo}: {last_err}", flush=True)
 
