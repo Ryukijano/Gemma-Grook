@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
+
 Gemma‑Le is an open-source Vision‑Language‑Action policy built on LeRobot and GR00T. It replaces prior NV Eagle components with standard Hugging Face backbones and a diffusion action head:
 
 - Vision: SigLIP (`google/siglip-so400m-patch14-384`)
@@ -10,6 +11,10 @@ Gemma‑Le is an open-source Vision‑Language‑Action policy built on LeRobot 
 - Action head: ScaleDP Transformer (layers=12, d_model=320, heads=8, ff=1280)
 
 The policy fuses SigLIP and Gemma features into a `conditioning_dim=768` vector and trains a diffusion head to predict action noise over `num_diffusion_steps=50` with temporal context `chunk_size=8`.
+=======
+Gemma-GR00T is an open-source project that integrates Google's Gemma language model with NVIDIA's GR00T robotics framework to create advanced multimodal vision-language-action policies for robotic manipulation tasks. This project enables robots to understand natural language instructions, perceive their environment through vision, and perform precise manipulation tasks.
+![Gemma-Gr00t](https://github.com/Ryukijano/Gemma-Grook/blob/main/84c6e56a-e60e-4d9b-a745-c5f6976ce746.png)
+
 
 ## 🚀 Features
 
