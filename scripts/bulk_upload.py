@@ -75,7 +75,7 @@ def main() -> None:
             "model.safetensors",
             "pytorch_model.bin",
             "model.bin",
-        ))
+        has_weights = any((p / fname).exists() for fname in WEIGHT_FILENAMES)
         if not (has_config and has_weights):
             print(f"SKIP {path_in_repo}: missing weights/config in {p}", flush=True)
             continue
