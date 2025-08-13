@@ -55,7 +55,8 @@ srun --export=ALL \
       --progress_bar true \
       --policy.use_amp true \
       --policy.vision_model_id /scratch/cbjp404/.cache/hf/models/siglip-so400m-patch14-384 \
-      --policy.text_model_id /scratch/cbjp404/.cache/hf/models/gemma-3-4b-it \
+      --policy.vision_model_id ${HF_HOME}/models/siglip-so400m-patch14-384 \
+      --policy.text_model_id ${HF_HOME}/models/gemma-3-4b-it \
       --push_to_hub false \
       --push_repo_id Ryukijano/gemma-groot \
       --push_branch main \
