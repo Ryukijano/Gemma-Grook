@@ -45,10 +45,17 @@ ENV/
 logs/
 outputs/
 checkpoints/
+bulk_upload_*.log
+upload_*.log
+gemma_le_train_*.err
+gemma_le_train_*.out
 
 # Dataset (exclude large files)
 data/
 demo_data/
+
+# Exported weights / artifacts
+exported_weights/
 
 # Jupyter Notebook
 .ipynb_checkpoints

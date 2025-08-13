@@ -13,6 +13,9 @@ def upload_to_hub(
     private: bool = True,
     commit_message: str = "Add Gemma-GR00T model weights",
     path_in_repo: str | None = None,
+    no_weights: bool = False,
+    allow_patterns: list[str] | None = None,
+    include_readme: bool = False,
 ):
     """
     Upload model to Hugging Face Hub.
@@ -49,14 +52,21 @@ def upload_to_hub(
     print(f"Uploading model files from {model_path}...")
     
     # Upload files using upload_folder
-    # NOTE: We ignore README.md so weight uploads don't overwrite the Hub model card
+    # Build ignore/allow patterns
+    ignore_patterns = ["__pycache__", "*.pyc"]
+    if not include_readme:
+        ignore_patterns.append("README.md")
+    if no_weights:
+        ignore_patterns.extend(["*.safetensors", "*.bin", "*.pt", "*.pth", "*.onnx", "*.ckpt"])  # common weight files
+
     upload_folder(
         folder_path=model_path,
         repo_id=repo_id,
         repo_type="model",
         commit_message=commit_message,
         path_in_repo=path_in_repo,
-        ignore_patterns=["__pycache__", "*.pyc", "README.md"],
+        ignore_patterns=ignore_patterns,
+        allow_patterns=allow_patterns,
     )
     
     print(f"Model successfully uploaded to: https://huggingface.co/{repo_id}")
@@ -76,6 +86,12 @@ if __name__ == "__main__":
                       help='Commit message for the upload')
     parser.add_argument('--path_in_repo', type=str, default=None,
                       help='Optional subfolder in the Hub repo to upload into')
+    parser.add_argument('--no_weights', action='store_true', default=False,
+                      help='Exclude model weight files (e.g., *.safetensors, *.bin, *.pth, *.pt, *.onnx, *.ckpt)')
+    parser.add_argument('--allow_patterns', nargs='*', default=None,
+                      help='Explicit whitelist of file patterns to include (e.g., *.json *.txt). Used with ignore patterns')
+    parser.add_argument('--include_readme', action='store_true', default=False,
+                      help='Also upload README.md from the local folder (by default it is ignored to preserve the Hub model card)')
     
     args = parser.parse_args()
     
@@ -85,4 +101,7 @@ if __name__ == "__main__":
         private=args.private,
         commit_message=args.commit_message,
         path_in_repo=args.path_in_repo,
+        no_weights=args.no_weights,
+        allow_patterns=args.allow_patterns,
+        include_readme=args.include_readme,
     )
