@@ -1,0 +1,80 @@
+{
+  "_name_or_path": "thinkact",
+  "architectures": ["ThinkActPolicy"],
+  "model_type": "thinkact",
+  
+  "backbone_cfg": {
+    "pretrained_model_name_or_path": "nvidia/GR00T-N1-5-3B",
+    "use_flash_attention_2": true,
+    "torch_dtype": "bfloat16"
+  },
+  
+  "action_head_cfg": {
+    "action_dim": 8,
+    "hidden_dim": 1536,
+    "num_layers": 6,
+    "num_attention_heads": 16,
+    "dropout": 0.1,
+    "use_flash_attention": true
+  },
+  
+  "action_horizon": 16,
+  "action_dim": 8,
+  "compute_dtype": "bfloat16",
+  
+  "reasoning_model_name": "google/gemma-3-27b-it",
+  "visual_plan_dim": 1024,
+  "image_size": 896,
+  "use_rl": true,
+  "goal_reward_scale": 1.0,
+  "traj_reward_scale": 0.1,
+  "kl_divergence_scale": 0.1,
+  "plan_update_interval": 10,
+  
+  "modality_config": {
+    "video.ego_view": {
+      "enabled": true,
+      "shape": [3, 224, 224],
+      "delta_indices": [0, 1, 2, 3, 4],
+      "normalization": {
+        "mean": [0.48145466, 0.4578275, 0.40821073],
+        "std": [0.26862954, 0.26130258, 0.27577711]
+      }
+    },
+    "state.joint_positions": {
+      "enabled": true,
+      "shape": [7],
+      "delta_indices": [0],
+      "normalization": "standard"
+    },
+    "state.joint_velocities": {
+      "enabled": true,
+      "shape": [7],
+      "delta_indices": [0],
+      "normalization": "standard"
+    },
+    "state.ee_pos": {
+      "enabled": true,
+      "shape": [3],
+      "delta_indices": [0],
+      "normalization": "standard"
+    },
+    "state.ee_quat": {
+      "enabled": true,
+      "shape": [4],
+      "delta_indices": [0],
+      "normalization": "standard"
+    },
+    "action": {
+      "enabled": true,
+      "shape": [8],
+      "delta_indices": [0],
+      "normalization": "standard"
+    },
+    "language_instruction": {
+      "enabled": true,
+      "shape": [1],
+      "tokenizer": "llava-hf/llava-1.5-7b-hf"
+    }
+  }
+}

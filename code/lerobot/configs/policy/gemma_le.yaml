@@ -1,0 +1,30 @@
+type: gemma_le
+
+# backbones
+vision_model_id: "google/siglip-so400m-patch14-384"
+text_model_id:   "google/gemma-3-4b-it"   # 3B-class target; good balance vs 8B/27B
+
+# inputs/targets
+image_features: ["observation.images.ego_view"]
+action_feature: "action"
+chunk_size: 8                      # reduce horizon for memory/latency
+num_diffusion_steps: 50            # train; use 8–12 at inference
+
+# fused conditioning + plan latent
+conditioning_dim: 768
+plan_update_interval: 10
+
+# ScaleDP (reasonable DiT, ~60–80M params)
+scaledp_num_layers: 12
+scaledp_dim_model: 320
+scaledp_num_heads: 8
+scaledp_dim_feedforward: 1280
+
+# fine-tuning efficiency
+use_lora: true
+lora_rank: 16
+lora_target_modules: ["q_proj","k_proj","v_proj","o_proj"]
+
+# optimizer
+optimizer_lr: 1e-4
+optimizer_weight_decay: 1e-6
